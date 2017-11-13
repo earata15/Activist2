@@ -1,9 +1,11 @@
-// solved 403 error, currently just pulling front page of gofundme
-// now comes the real grunt work:
-// TODO:
-// create search queries (user input or just predefined) & request HTML from search pages
-// cull results & consolidate into a document (no repeats) (JSON?)
-// information included in document: title, URL, location, funding goal, funds raised
+// solved 403 error, currently just pulling a single search page of gofundme
+// prints info about each result to the console 
+//TODO:
+// format information & consolidate into a document - JSON? eventually excel
+// information included in document: title, URL, location, funding goal, funds raised, might be nice to keep description in
+
+// create multiple search queries (user input or just predefined) & pull info from multiple search pages into one document (no repeats)
+
 
 
 var express = require("express");

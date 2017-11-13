@@ -1,5 +1,9 @@
-// problems: check console for output
-//html is giving us a 403 error, GoFundMe not allowing us to scrape
+// solved 403 error, currently just pulling front page of gofundme
+// now comes the real grunt work:
+// TODO:
+// create search queries (user input or just predefined) & request HTML from search pages
+// cull results & consolidate into a document (no repeats) (JSON?)
+// information included in document: title, URL, location, funding goal, funds raised
 
 
 var express = require("express");
@@ -14,8 +18,13 @@ url = "https://www.gofundme.com";
 	//the structure of our request call
 	// the first parameter is our URL
 	// the callback function takes 3 parameters
-request(url, function(error, response, html){
 
+var options = {
+  headers: {'user-agent': 'node.js'}
+}
+
+request(url, options, function(error, response, html){
+	
 	if(!error){
 		// Next, we'll utilize the cheerio library on the returned html which will essentially give us jQuery functionality
 		var $ = cheerio.load(html);
@@ -27,6 +36,7 @@ request(url, function(error, response, html){
 		$('div.tile-title').each(function(i, element){
 	        var a = $(this).prev();
      			console.log(a.text());
+     			console.log("logged");
 	    });
 	}
 });
